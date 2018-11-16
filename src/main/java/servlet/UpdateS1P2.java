@@ -5,7 +5,7 @@
  */
 package servlet;
 
-import entity.Step1SecurityPlan;
+import entity.Step1Securisation;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -66,10 +66,10 @@ public class UpdateS1P2 extends HttpServlet {
         String removePlan = request.getParameter("removePlan");
         String hashcode = request.getParameter("hashcode");
         //Step1 step1 = (Step1) session.getAttribute("step1");
-        List<Step1SecurityPlan> listStep1SecurityPlan = step1.getStep1SecurityPlanList();
+        List<Step1Securisation> listStep1SecurityPlan = step1.getStep1SecurisationList();
 
         if (listStep1SecurityPlan == null) {
-            listStep1SecurityPlan = new ArrayList<Step1SecurityPlan>();
+            listStep1SecurityPlan = new ArrayList<Step1Securisation>();
             // session.setAttribute("listSecurityPlan", listStep1SecurityPlan);
         }
 
@@ -140,11 +140,11 @@ public class UpdateS1P2 extends HttpServlet {
             String n1 = request.getParameter("n1");
             String n2 = request.getParameter("n2");
 
-            Step1SecurityPlan sp = new Step1SecurityPlan();
+            Step1Securisation sp = new Step1Securisation();
 
             sp.setWhere(where);
-            sp.setWho(service.ServiceUser.find(Integer.parseInt(who)));
-            sp.setHowMuch(Integer.parseInt(n1));
+            sp.setAffectedTo(service.ServiceUser.find(Integer.parseInt(who)));
+            sp.setHowMutch(Integer.parseInt(n1));
             sp.setResult(Integer.parseInt(n2));
             sp.setIdStep1(step1);
             ServiceStep1SecurityPlan.create(sp);
@@ -154,7 +154,7 @@ public class UpdateS1P2 extends HttpServlet {
             n.setTitle(problem.getIdUser().getFirstName()+" "+problem.getIdUser().getName()+" a mentionné votre nom dans le plan de securité de "+problem.getCode());
             n.setIdProblem(problem);
             n.setDateCreation(new Date(new Date().getTime()));
-            n.setIdUser(sp.getWho());
+            n.setIdUser(sp.getAffectedTo());
             ServiceNotification.create(n);
             //**************************************   
 
@@ -163,12 +163,12 @@ public class UpdateS1P2 extends HttpServlet {
 
         } else if (removePlan != null) {
 
-            Step1SecurityPlan step1SecurityPlan = null;
+            Step1Securisation step1Securisation = null;
 
             for (int i = 0; i < listStep1SecurityPlan.size(); i++) {
-                step1SecurityPlan = listStep1SecurityPlan.get(i);
-                if ((step1SecurityPlan.hashCode() + "").equals(hashcode)) {
-                    ServiceStep1SecurityPlan.destroy(step1SecurityPlan.getId());
+                step1Securisation = listStep1SecurityPlan.get(i);
+                if ((step1Securisation.hashCode() + "").equals(hashcode)) {
+                    ServiceStep1SecurityPlan.destroy(step1Securisation.getId());
                 }
             }
 

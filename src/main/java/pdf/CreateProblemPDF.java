@@ -25,7 +25,7 @@ import entity.Step1;
 import entity.Step1Action;
 import entity.Step1AlertCan;
 import entity.Step1AlertShould;
-import entity.Step1SecurityPlan;
+import entity.Step1Securisation;
 import entity.Step1Why;
 import java.io.File;
 import java.io.FileInputStream;
@@ -573,10 +573,10 @@ public class CreateProblemPDF {
         table.addCell(new Colonne("Combien", 10, BaseColor.BLACK, BaseColor.LIGHT_GRAY, 5, PdfPCell.ALIGN_LEFT, 1).getPdfCell());
         table.addCell(new Colonne("Resultat", 10, BaseColor.BLACK, BaseColor.LIGHT_GRAY, 5, PdfPCell.ALIGN_LEFT, 1).getPdfCell());
 
-        for (Step1SecurityPlan step1SecurityPlan : step1.getStep1SecurityPlanList()) {
+        for (Step1Securisation step1SecurityPlan : step1.getStep1SecurisationList()) {
             table.addCell(new Colonne(step1SecurityPlan.getWhere(), 10, BaseColor.DARK_GRAY, BaseColor.WHITE, 5, PdfPCell.ALIGN_LEFT, 1).getPdfCell());
-            table.addCell(new Colonne(step1SecurityPlan.getWho().getFirstName()+" "+step1SecurityPlan.getWho().getName(), 10, BaseColor.DARK_GRAY, BaseColor.WHITE, 5, PdfPCell.ALIGN_LEFT, 1).getPdfCell());
-            table.addCell(new Colonne(step1SecurityPlan.getHowMuch() + "", 10, BaseColor.DARK_GRAY, BaseColor.WHITE, 5, PdfPCell.ALIGN_LEFT, 1).getPdfCell());
+            table.addCell(new Colonne(step1SecurityPlan.getAffectedTo().getFirstName()+" "+step1SecurityPlan.getAffectedTo().getName(), 10, BaseColor.DARK_GRAY, BaseColor.WHITE, 5, PdfPCell.ALIGN_LEFT, 1).getPdfCell());
+            table.addCell(new Colonne(step1SecurityPlan.getHowMutch()+ "", 10, BaseColor.DARK_GRAY, BaseColor.WHITE, 5, PdfPCell.ALIGN_LEFT, 1).getPdfCell());
             table.addCell(new Colonne(step1SecurityPlan.getResult() + "", 10, BaseColor.DARK_GRAY, BaseColor.WHITE, 5, PdfPCell.ALIGN_LEFT, 1).getPdfCell());
         }
 
@@ -635,13 +635,13 @@ public class CreateProblemPDF {
 
             table.addCell(new Colonne((i + 1) + "", 10, BaseColor.DARK_GRAY, BaseColor.WHITE, 5, PdfPCell.ALIGN_LEFT, 1).getPdfCell());
             table.addCell(new Colonne(step1Action.getAction(), 10, BaseColor.DARK_GRAY, BaseColor.WHITE, 5, PdfPCell.ALIGN_LEFT, 1).getPdfCell());
-            table.addCell(new Colonne(step1Action.getWho() + "", 10, BaseColor.DARK_GRAY, BaseColor.WHITE, 5, PdfPCell.ALIGN_LEFT, 1).getPdfCell());
-            table.addCell(new Colonne(step1Action.getWhen() + "", 10, BaseColor.DARK_GRAY, BaseColor.WHITE, 5, PdfPCell.ALIGN_LEFT, 1).getPdfCell());
-            table.addCell(new Colonne(step1Action.getComment().trim() + "", 10, BaseColor.DARK_GRAY, BaseColor.WHITE, 5, PdfPCell.ALIGN_LEFT, 1).getPdfCell());
-            if (step1Action.getStatus() == 100) {
-                table.addCell(new Colonne(step1Action.getStatus() + "", 10, BaseColor.GREEN, BaseColor.WHITE, 5, PdfPCell.ALIGN_LEFT, 1).getPdfCell());
+            table.addCell(new Colonne(step1Action.getAffectedTo()+ "", 10, BaseColor.DARK_GRAY, BaseColor.WHITE, 5, PdfPCell.ALIGN_LEFT, 1).getPdfCell());
+            table.addCell(new Colonne(step1Action.getStartDate()+ "", 10, BaseColor.DARK_GRAY, BaseColor.WHITE, 5, PdfPCell.ALIGN_LEFT, 1).getPdfCell());
+            table.addCell(new Colonne(step1Action.getDescription().trim() + "", 10, BaseColor.DARK_GRAY, BaseColor.WHITE, 5, PdfPCell.ALIGN_LEFT, 1).getPdfCell());
+            if (step1Action.getPercentageCompleted()== 100) {
+                table.addCell(new Colonne(step1Action.getPercentageCompleted()+ "", 10, BaseColor.GREEN, BaseColor.WHITE, 5, PdfPCell.ALIGN_LEFT, 1).getPdfCell());
             } else {
-                table.addCell(new Colonne(step1Action.getStatus() + "", 10, BaseColor.PINK, BaseColor.WHITE, 5, PdfPCell.ALIGN_LEFT, 1).getPdfCell());
+                table.addCell(new Colonne(step1Action.getPercentageCompleted() + "", 10, BaseColor.PINK, BaseColor.WHITE, 5, PdfPCell.ALIGN_LEFT, 1).getPdfCell());
             }
         }
 

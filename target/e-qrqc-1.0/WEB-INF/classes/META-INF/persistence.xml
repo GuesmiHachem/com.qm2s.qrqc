@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+  <persistence-unit name="com.mycompany_xxx_war_1.0-SNAPSHOTPU" transaction-type="RESOURCE_LOCAL">
+    <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+    <class>entity.TypeUser</class>
+    <class>entity.Step1Comment</class>
+    <class>entity.User</class>
+    <class>entity.Level1</class>
+    <class>entity.Step1Action</class>
+    <class>entity.RankTeam</class>
+    <class>entity.TypeProblem</class>
+    <class>entity.Level3</class>
+    <class>entity.Level2</class>
+    <class>entity.Step1SecurityPlan</class>
+    <class>entity.Step1ActionFollowed</class>
+    <class>entity.Step1</class>
+    <class>entity.Step1AlertShould</class>
+    <class>entity.Level2Relation</class>
+    <class>entity.Problem</class>
+    <class>entity.Notification</class>
+    <class>entity.Step1Why</class>
+    <class>entity.Nature</class>
+    <class>entity.Step1AlertCan</class>
+    <class>entity.Step1View</class>
+    <class>entity.Processus</class>
+    <class>entity.Level0</class>
+    <class>entity.Hardware</class>
+    <class>entity.Step1Securisation</class>
+    <exclude-unlisted-classes>false</exclude-unlisted-classes>
+    <properties>
+      <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/monBase?zeroDateTimeBehavior=convertToNull"/>
+      <property name="javax.persistence.jdbc.user" value="root"/>
+      <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
+      <property name="javax.persistence.jdbc.password" value=""/>
+    </properties>
+  </persistence-unit>
+</persistence>

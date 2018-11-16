@@ -82,10 +82,10 @@ public class CreateS1P3 extends HttpServlet {
             Step1Action step1Action = new Step1Action();
 
             step1Action.setIdStep1(step1);
-            step1Action.setComment(commentaire);
-            step1Action.setWho(service.ServiceUser.find(Integer.parseInt(qui)));
+            step1Action.setDescription(commentaire);
+            step1Action.setAffectedTo(service.ServiceUser.find(Integer.parseInt(qui)));
             step1Action.setAction(action);
-            step1Action.setWhen(quand);
+           /// step1Action.getStartDate(quand);
             ServiceStep1Action.create(step1Action);
             
             //*************************************************
@@ -93,7 +93,7 @@ public class CreateS1P3 extends HttpServlet {
             n.setTitle(problem.getIdUser().getFirstName()+" "+problem.getIdUser().getName()+" a mentionné votre nom dans la liste des actions de "+problem.getCode());
             n.setIdProblem(problem);
             n.setDateCreation(new Date(new Date().getTime()));
-            n.setIdUser(step1Action.getWho());
+            n.setIdUser(step1Action.getAffectedTo());
             ServiceNotification.create(n);
             //*************************************************
             
@@ -107,10 +107,10 @@ public class CreateS1P3 extends HttpServlet {
             Step1Action step1Action = ServiceStep1Action.find(Integer.parseInt(idStep1Action));
 
             //step1Action.setIdStep1(step1);
-            step1Action.setComment(commentaire);
-            step1Action.setWho(service.ServiceUser.find(Integer.parseInt(qui)));
+            step1Action.setDescription(commentaire);
+            step1Action.setAffectedTo(service.ServiceUser.find(Integer.parseInt(qui)));
             step1Action.setAction(action);
-            step1Action.setWhen(quand);
+            //step1Action.setWhen(quand);
             ServiceStep1Action.edit(step1Action);
 
             //response.sendRedirect(application.getContextPath() + "/Problem?id=" + problem.getId());
@@ -120,8 +120,8 @@ public class CreateS1P3 extends HttpServlet {
             Step1Action step1Action = ServiceStep1Action.find(Integer.parseInt(idStep1Action));
 
             //step1Action.setIdStep1(step1);
-            if (step1Action.getStatus() + 5 <= 100) {
-                step1Action.setStatus(step1Action.getStatus() + 5);
+            if (step1Action.getPercentageCompleted()+ 5 <= 100) {
+                step1Action.setPercentageCompleted(step1Action.getPercentageCompleted()+ 5);
                 ServiceStep1Action.edit(step1Action);
             }
 
@@ -132,8 +132,8 @@ public class CreateS1P3 extends HttpServlet {
             Step1Action step1Action = ServiceStep1Action.find(Integer.parseInt(idStep1Action));
 
             //step1Action.setIdStep1(step1);
-            if (step1Action.getStatus() - 5 >= 0) {
-                step1Action.setStatus(step1Action.getStatus() - 5);
+            if (step1Action.getPercentageCompleted() - 5 >= 0) {
+                step1Action.setPercentageCompleted(step1Action.getPercentageCompleted() - 5);
                 ServiceStep1Action.edit(step1Action);
             }
 
