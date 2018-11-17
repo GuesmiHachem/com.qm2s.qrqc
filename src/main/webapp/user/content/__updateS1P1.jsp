@@ -19,7 +19,7 @@
     User user = problem.getIdUser();
 
     List<Step1Action> listStep1Action = step1.getStep1ActionList();
-    List<Step1SecurityPlan> listStep1SecurityPlan = step1.getStep1SecurityPlanList();
+    List<Step1Securisation> listStep1SecurityPlan = step1.getStep1SecurisationList();
     List<Step1ActionFollowed> listStep1ActionFollowed = step1.getStep1ActionFollowedList();
     //List<Step1Why> listStep1Why = step1.getSte
     List<Step1AlertCan> listStep1AlertCan = step1.getStep1AlertCanList();
@@ -147,12 +147,12 @@
                                                     <input name="probleme_recurrent" type="checkbox" checked>
                                                     <span class="slider round"></span>
                                                 </label>   
-                                                 <%} else {%>
-                                                 <label class="switch">
+                                                <%} else {%>
+                                                <label class="switch">
                                                     <input name="probleme_recurrent" type="checkbox" >
                                                     <span class="slider round"></span>
                                                 </label>  
-                                                 <%}%>
+                                                <%}%>
                                             </div>
                                         </div>
                                     </div>

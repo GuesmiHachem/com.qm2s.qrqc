@@ -349,57 +349,60 @@
                 <table id=""  class="w3-table display responsive no-wrap w3-round w3-border w3-border-blue-gray" style="width:100%">
                     <thead class="w3-blue-gray">
                         <tr>
-                            <th style=" white-space: nowrap;" class="" >#</th>
+                            <th style=" white-space: nowrap;" class="" >Code QRQC</th>
                             <th style=" white-space: nowrap;" class="" >Non de l'action</th>
                             <th style=" white-space: nowrap;" class="" >Priorité</th>
-                            <th style=" white-space: nowrap;" class="" >État</th>
-                            <th style=" white-space: nowrap;" class="" >Description</th>
+                            <th style=" white-space: nowrap;" class="" >État</th>                           
                             <th style=" white-space: nowrap;" class="" >Date de début</th>
                             <th style=" white-space: nowrap;" class="" >Échéance</th>
                             <th style=" white-space: nowrap;" class="" >Pourcentage achevé %</th>
                             <th style=" white-space: nowrap;" class="" >Affecté à</th>
+                            <th style=" white-space: nowrap;" class="" >Description</th>
                         </tr>
                     </thead>
                     <tbody>
                         <%
-                            for (Step1Securisation step1Securisation : step1.getStep1SecurisationList()) {
+                            for (Step1 step11 : ServiceStep1.findAll()) {
+                        %>
+
+                        <%
+                            for (Step1Securisation step1Securisation : step11.getStep1SecurisationList()) {
                         %>
 
                         <tr>
-                            <td style=" white-space: nowrap;" class="" ><%=1%></td>
+                            <td style=" white-space: nowrap;" class="" ><%=step1Securisation.getIdStep1().getIdProblem().getCode()%></td>
                             <td style=" white-space: nowrap;" class="" >Plan de sécurisation</td>
                             <td style=" white-space: nowrap;" class="" ><%=step1Securisation.getPriority()%></td>
                             <td style=" white-space: nowrap;" class="" ><%=step1Securisation.getState()%></td>
-                            <td style=" white-space: nowrap;" class="" ><%=step1Securisation.getDescription()%></td>
-                            <td style=" white-space: nowrap;" class="" <%=step1Securisation.getStartDate()%></td>
-                            <td style=" white-space: nowrap;" class="" ><%=step1Securisation.getDeadline()%></td>
+
+                            <td style=" white-space: nowrap;" class="" ><%=new SimpleDateFormat("MM/dd/yyyy").format(step1Securisation.getStartDate())%></td>
+                            <td style=" white-space: nowrap;" class="" ><%=new SimpleDateFormat("MM/dd/yyyy").format(step1Securisation.getDeadline())%></td>
                             <td style=" white-space: nowrap;" class="" ><%=step1Securisation.getPercentageCompleted()%>%</td>
                             <td style=" white-space: nowrap;" class="" ><%=step1Securisation.getAffectedTo().getFirstName() + " " + step1Securisation.getAffectedTo().getName()%></td>
-                            
+                            <td style=" white-space: nowrap;" class="" ><%=step1Securisation.getDescription()%></td>
                         </tr>
                         <%
                             }
 
                         %>
 
-                        <%                            for (Step1Action step1Action : step1.getStep1ActionList()) {
+                        <%                            for (Step1Action step1Action : step11.getStep1ActionList()) {
                         %>
 
                         <tr>
-                            <td style=" white-space: nowrap;" class="" ><%=1%></td>
+                            <td style=" white-space: nowrap;" class="" ><%=step1Action.getId()%></td>
                             <td style=" white-space: nowrap;" class="" >Plan de sécurisation</td>
                             <td style=" white-space: nowrap;" class="" ><%=step1Action.getPriority()%></td>
                             <td style=" white-space: nowrap;" class="" ><%=step1Action.getState()%></td>
-                            <td style=" white-space: nowrap;" class="" ><%=step1Action.getDescription()%></td>
-                            <td style=" white-space: nowrap;" class="" <%=step1Action.getStartDate()%></td>
-                            <td style=" white-space: nowrap;" class="" ><%=step1Action.getDeadline()%></td>
+                            <td style=" white-space: nowrap;" class="" ><%=new SimpleDateFormat("MM/dd/yyyy").format(step1Action.getStartDate())%></td>
+                            <td style=" white-space: nowrap;" class="" ><%=new SimpleDateFormat("MM/dd/yyyy").format(step1Action.getDeadline())%></td>
                             <td style=" white-space: nowrap;" class="" ><%=step1Action.getPercentageCompleted()%>%</td>
                             <td style=" white-space: nowrap;" class="" ><%=step1Action.getAffectedTo().getFirstName() + " " + step1Action.getAffectedTo().getName()%></td>
-
+                            <td style=" white-space: nowrap;" class="" ><%=step1Action.getDescription()%></td>
                         </tr>
                         <%
+                                }
                             }
-
                         %>
 
                     </tbody>

@@ -8,9 +8,13 @@ package servlet;
 import entity.Step1Securisation;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -135,30 +139,47 @@ public class UpdateS1P2 extends HttpServlet {
 
         } else if (AddPlan != null) {
 
-            String where = request.getParameter("where");
-            String who = request.getParameter("who");
-            String n1 = request.getParameter("n1");
-            String n2 = request.getParameter("n2");
+            try {
+                String priority = request.getParameter("priority");
+                String state = request.getParameter("state");
+                String percentage_completed = request.getParameter("percentage_completed");
+                String description = request.getParameter("description");
+                String start_date = request.getParameter("start_date");
+                String deadline = request.getParameter("deadline");
+                String affected_to = request.getParameter("affected_to");
+                String where_ = request.getParameter("where_");
+                String how_mutch = request.getParameter("how_mutch");
+                String result = request.getParameter("result");
 
-            Step1Securisation sp = new Step1Securisation();
+                Step1Securisation sp = new Step1Securisation();
+                //response.getWriter().print(start_date);
+                sp.setAction("Securisation client");
+                sp.setPriority(priority);
+                sp.setState(state);
+                sp.setPercentageCompleted(Integer.parseInt(percentage_completed));
+                sp.setDescription(description);
+                sp.setStartDate(new SimpleDateFormat("yyyy-MM-dd").parse(start_date));
+                sp.setDeadline(new SimpleDateFormat("yyyy-MM-dd").parse(deadline));
+                sp.setAffectedTo(service.ServiceUser.find(Integer.parseInt(affected_to)));
+                sp.setHowMutch(Integer.parseInt(how_mutch));
+                sp.setResult(Integer.parseInt(result));
+                sp.setWhere(where_);
+                sp.setIdStep1(step1);
+                ServiceStep1SecurityPlan.create(sp);
 
-            sp.setWhere(where);
-            sp.setAffectedTo(service.ServiceUser.find(Integer.parseInt(who)));
-            sp.setHowMutch(Integer.parseInt(n1));
-            sp.setResult(Integer.parseInt(n2));
-            sp.setIdStep1(step1);
-            ServiceStep1SecurityPlan.create(sp);
+                //**************************************
+                entity.Notification n = new entity.Notification();
+                n.setTitle(problem.getIdUser().getFirstName() + " " + problem.getIdUser().getName() + " a mentionné votre nom dans le plan de securité de " + problem.getCode());
+                n.setIdProblem(problem);
+                n.setDateCreation(new Date(new Date().getTime()));
+                n.setIdUser(sp.getAffectedTo());
+                ServiceNotification.create(n);
+                //**************************************
 
-            //**************************************
-            entity.Notification n = new entity.Notification();
-            n.setTitle(problem.getIdUser().getFirstName()+" "+problem.getIdUser().getName()+" a mentionné votre nom dans le plan de securité de "+problem.getCode());
-            n.setIdProblem(problem);
-            n.setDateCreation(new Date(new Date().getTime()));
-            n.setIdUser(sp.getAffectedTo());
-            ServiceNotification.create(n);
-            //**************************************   
-
-            //session.setAttribute("listSecurityPlan", listStep1SecurityPlan);
+                //session.setAttribute("listSecurityPlan", listStep1SecurityPlan);
+            } catch (ParseException ex) {
+                Logger.getLogger(UpdateS1P2.class.getName()).log(Level.SEVERE, null, ex);
+            }
             response.sendRedirect(application.getContextPath() + "/S1P2?id=" + problem.getId());
 
         } else if (removePlan != null) {

@@ -12,7 +12,7 @@
     <head>
         <%@include file="../include/__langue.jsp" %>
         <%@include file="../include/__css.jsp" %>
-          <link rel="stylesheet"  href="<%=application.getContextPath()%>/assets/css/demo.css">
+        <link rel="stylesheet"  href="<%=application.getContextPath()%>/assets/css/demo.css">
 
     </head>
 

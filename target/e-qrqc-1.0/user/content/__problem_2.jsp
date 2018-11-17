@@ -317,7 +317,7 @@
                                 <div class="col-lg-4">
                                     <div class="form-group">
                                         <label>Voir le rapport de tri</label>
-                                        <a href="#"  class="form-control w3-text-blue"  > cliquer ici ..</a>
+                                        <a href="#"  class="form-control w3-text-white w3-light-blue"  > cliquer ici ..</a>
                                     </div>
                                 </div> 
 
@@ -336,10 +336,9 @@
                                 </div> 
                                 <div class="col-lg-12">
                                     <label>Plan de sécurisation client</label>
-                                    <table  class="w3-table w3-border w3-border-blue-gray  display table-bordered w3-card-4 " cellspacing="0" width="100%" style="width:100%">
+                                    <table  class="tableq  w3-responsive table-sm w3-table " cellspacing="0" width="100%" style="width:100%">
                                         <thead class="w3-blue-gray"> 
                                             <tr>
-                                                <th style=" white-space: nowrap;" class="" >#</th>
                                                 <th style=" white-space: nowrap;" class="" >Non de l'action</th>
                                                 <th style=" white-space: nowrap;" class="" >Priorité</th>
                                                 <th style=" white-space: nowrap;" class="" >État</th>
@@ -355,22 +354,22 @@
                                         </thead>
                                         <tbody>
                                             <%
+                                                out.println(listStep1Securisation.size());
                                                 for (Step1Securisation step1Securisation : listStep1Securisation) {
                                             %>
 
                                             <tr>
-                                                <td style=" white-space: nowrap;" class="" ><%=1%></td>
-                                                <td style=" white-space: nowrap;" class="" >Plan de sécurisation</td>
-                                                <td style=" white-space: nowrap;" class="" ><%=step1Securisation.getPriority()%></td>
-                                                <td style=" white-space: nowrap;" class="" ><%=step1Securisation.getState()%></td>
-                                                <td style=" white-space: nowrap;" class="" ><%=step1Securisation.getDescription()%></td>
-                                                <td style=" white-space: nowrap;" class="" <%=step1Securisation.getStartDate()%></td>
-                                                <td style=" white-space: nowrap;" class="" ><%=step1Securisation.getDeadline()%></td>
-                                                <td style=" white-space: nowrap;" class="" ><%=step1Securisation.getPercentageCompleted()%>%</td>
-                                                <td style=" white-space: nowrap;" class="" ><%=step1Securisation.getAffectedTo().getFirstName() + " " + step1Securisation.getAffectedTo().getName()%></td>
-                                                <td style=" white-space: nowrap;" class="" ><%=step1Securisation.getWhere()%></td>
-                                                <td style=" white-space: nowrap;" class="" ><%=step1Securisation.getHowMutch()%></td>
-                                                <td style=" white-space: nowrap;" class="" ><%=step1Securisation.getResult()%></td>
+                                                <td style=" white-space: nowrap;" class="w3-border" >Plan de sécurisation</td>
+                                                <td style=" white-space: nowrap;" class="w3-border" ><%=step1Securisation.getPriority()%></td>
+                                                <td style=" white-space: nowrap;" class="w3-border" ><%=step1Securisation.getState()%></td>
+                                                <td style=" white-space: nowrap;" class="w3-border" ><%=step1Securisation.getDescription()%></td>
+                                                <td style=" white-space: nowrap;" class="w3-border" ><%=new SimpleDateFormat("MM/dd/yyyy").format(step1Securisation.getStartDate())%></td>
+                                                <td style=" white-space: nowrap;" class="w3-border" ><%=new SimpleDateFormat("MM/dd/yyyy").format(step1Securisation.getDeadline())%></td>
+                                                <td style=" white-space: nowrap;" class="w3-border" ><%=step1Securisation.getPercentageCompleted()%>%</td>
+                                                <td style=" white-space: nowrap;" class="w3-border" ><%=step1Securisation.getAffectedTo().getFirstName() + " " + step1Securisation.getAffectedTo().getName()%></td>
+                                                <td style=" white-space: nowrap;" class="w3-border" ><%=step1Securisation.getWhere()%></td>
+                                                <td style=" white-space: nowrap;" class="w3-border" ><%=step1Securisation.getHowMutch()%></td>
+                                                <td style=" white-space: nowrap;" class="w3-border" ><%=step1Securisation.getResult()%></td>
                                             </tr>
                                             <%
                                                 }

@@ -21,7 +21,7 @@ public class Config {
     }
 
     public void config1() {
-        this.pathApp = "C:\\Users\\Hachem\\Documents\\NetBeansProjects\\eq\\";
+        this.pathApp = "C:\\Users\\Hachem\\Documents\\NetBeansProjects\\com.qm2s.qrqc\\";
         this.pathPictureUser = this.pathApp + "src\\main\\webapp\\img\\profile\\";
         this.pathPictureProblem = this.pathApp + "src\\main\\webapp\\upload\\";
         this.pathPdf = this.pathApp + "src\\main\\webapp\\pdf\\";
@@ -31,7 +31,7 @@ public class Config {
     public void config2() {
 
         this.pathApp = "/usr/local/tomcat7/webapps/eq/";
-        this.pathPictureUser =this.pathApp + "img/profile/";
+        this.pathPictureUser = this.pathApp + "img/profile/";
         this.pathPictureProblem = this.pathApp + "upload/";
         this.pathPdf = this.pathApp + "pdf/";
     }
@@ -52,5 +52,4 @@ public class Config {
         return pathPdf;
     }
 
-    
 }

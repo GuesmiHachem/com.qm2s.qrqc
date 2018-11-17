@@ -85,18 +85,18 @@ public class CreateS1P3 extends HttpServlet {
             step1Action.setDescription(commentaire);
             step1Action.setAffectedTo(service.ServiceUser.find(Integer.parseInt(qui)));
             step1Action.setAction(action);
-           /// step1Action.getStartDate(quand);
+            /// step1Action.getStartDate(quand);
             ServiceStep1Action.create(step1Action);
-            
+
             //*************************************************
             entity.Notification n = new entity.Notification();
-            n.setTitle(problem.getIdUser().getFirstName()+" "+problem.getIdUser().getName()+" a mentionné votre nom dans la liste des actions de "+problem.getCode());
+            n.setTitle(problem.getIdUser().getFirstName() + " " + problem.getIdUser().getName() + " a mentionné votre nom dans la liste des actions de " + problem.getCode());
             n.setIdProblem(problem);
             n.setDateCreation(new Date(new Date().getTime()));
             n.setIdUser(step1Action.getAffectedTo());
             ServiceNotification.create(n);
             //*************************************************
-            
+
             //response.sendRedirect(application.getContextPath() + "/Problem?id=" + problem.getId());
         } else if (updateAction != null) {
             String idStep1Action = request.getParameter("idStep1Action");
@@ -120,8 +120,8 @@ public class CreateS1P3 extends HttpServlet {
             Step1Action step1Action = ServiceStep1Action.find(Integer.parseInt(idStep1Action));
 
             //step1Action.setIdStep1(step1);
-            if (step1Action.getPercentageCompleted()+ 5 <= 100) {
-                step1Action.setPercentageCompleted(step1Action.getPercentageCompleted()+ 5);
+            if (step1Action.getPercentageCompleted() + 5 <= 100) {
+                step1Action.setPercentageCompleted(step1Action.getPercentageCompleted() + 5);
                 ServiceStep1Action.edit(step1Action);
             }
 

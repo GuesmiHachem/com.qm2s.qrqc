@@ -67,7 +67,7 @@ public class ProblemPdf extends HttpServlet {
         //--------------------------------------------------------
         String idProblem = request.getParameter("id");
         entity.Problem problem = ServiceProblem.find(Integer.parseInt(idProblem));
-        pdf.CreateProblemPDF problemPdf =new CreateProblemPDF(problem);
+        pdf.CreateProblemPDF problemPdf = new CreateProblemPDF(problem);
         problemPdf.performTask(request, response);
     }
 
