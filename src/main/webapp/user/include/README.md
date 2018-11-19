@@ -20,4 +20,4 @@ function fancyAlert(arg) {
 I think you should use an
 `<addr>` element here instead.
 
-<button type="button" class="btn btn-primary"  onclick="addHardware();">Ajouter</button>
+<button type="button" style="color:red"  onclick="addHardware();">Ajouter</button>
