@@ -17,6 +17,13 @@ function fancyAlert(arg) {
   }
 }
 ```
+
+```java
+if (isAwesome!=null){
+  return true;
+}
+```
+
 I think you should use an
 `<addr>` element here instead.
 
