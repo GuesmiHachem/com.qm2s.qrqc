@@ -20,4 +20,6 @@ function fancyAlert(arg) {
 I think you should use an
 `<addr>` element here instead.
 
-<button type="button" style="color:red"  onclick="addHardware();">Ajouter</button>
+If you want to embed images, this is how you do it:
+
+![Image of Yaktocat](https://octodex.github.com/images/yaktocat.png)
